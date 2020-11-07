@@ -8,7 +8,7 @@ const CustomHeaderHistory = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [date, setDate] = useState(new Date(1598051730000));
     const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -50,27 +50,34 @@ const CustomHeaderHistory = () => {
                                 Alert.alert("Modal has been closed.");
                             }}
                         >
-                            <View style={styles.centeredViewModal}>
-                                <View>
-                                    {show && (
-                                        <DateTimePicker
-                                            testID="dateTimePicker"
-                                            value={date}
-                                            mode={mode}
-                                            is24Hour={true}
-                                            display="default"
-                                            onChange={onChange}
-                                        />
-                                    )}
-                                </View>
-                                <View style={{ alignItems: 'center' }}>
-
-                                    <TouchableOpacity
-                                        onPress={() => setModalVisible(!modalVisible)}
-                                        style={{ width: 60, backgroundColor: 'gray', borderRadius: 10, padding: 10 }}
-                                    >
-                                        <Text>Dong</Text>
-                                    </TouchableOpacity>
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <View>
+                                        {show && (
+                                            <DateTimePicker
+                                                testID="dateTimePicker"
+                                                value={date}
+                                                mode={mode}
+                                                is24Hour={true}
+                                                display="default"
+                                                onChange={onChange}
+                                            />
+                                        )}
+                                    </View>
+                                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={showDatepicker}
+                                            style={{ backgroundColor: 'gray', borderRadius: 10, padding: 10 }}
+                                        >
+                                            <Text>Chọn ngày</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={() => setModalVisible(!modalVisible)}
+                                            style={{ width: 60, backgroundColor: 'gray', borderRadius: 10, padding: 10 }}
+                                        >
+                                            <Text>Dong</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
 
@@ -103,9 +110,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
-    },
-    centeredViewModal: {
-        backgroundColor: '#fff',
     },
     modalView: {
         backgroundColor: "white",
