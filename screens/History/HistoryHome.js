@@ -4,8 +4,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import HistoryCategories from './HistoryCategories';
 import { Fab } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import CustomHeaderHistory from '../../components/CustomHeaderHistory';
-import Canlendars from '../../components/Canlendars';
+import CustomHeaderHistory from '../../components/HistoryHome/CustomHeaderHistory';
 
 const initialState = [
     { id: 1, price: '200.000', danhMuc: 'Tiền phụ cấp', time: '13:00', namedanhMuc: 'facebook' },
@@ -21,7 +20,6 @@ const initialState = [
 ];
 const HistoryHome = (props) => {
     const [state, setstate] = useState(initialState);
-    const [modalVisible, setModalVisible] = useState(false);
     const [active, setActive] = useState(false);
         return (
             <View>

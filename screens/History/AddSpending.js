@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import CustomAddSpending from '../../components/CustomAddSpending';
+import CustomAddSpending from '../../components/AddSpending/CustomAddSpending';
 
 
 export default class AddSpending extends Component {
