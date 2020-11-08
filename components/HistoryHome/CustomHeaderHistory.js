@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Modal, TouchableHighlight, Alert, Button } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Canlendars from './Canlendars';
 import DateTimePicker from '@react-native-community/datetimepicker';
+
+const thongKe = {
+    name : '',
+    dateChangeTo : 'Ngày',
+    dateChangeEnd : 'Ngày'
+}
 
 const CustomHeaderHistory = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [date, setDate] = useState(new Date(1598051730000));
+    const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+    const [state, setState] = useState(thongKe);
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
+        console.log(currentDate);
+        var dd = currentDate.getDate();
+        var mm = currentDate.getMonth() + 1;
+        var yyyy = currentDate.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        const dateNew =  dd + "-" + mm + "-" + yyyy;
+        setState({dateChangeTo:dateNew.toString()});
     };
 
     const showMode = (currentMode) => {
@@ -61,21 +79,45 @@ const CustomHeaderHistory = () => {
                                                 is24Hour={true}
                                                 display="default"
                                                 onChange={onChange}
+                                                
                                             />
                                         )}
                                     </View>
                                     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                                        <TouchableOpacity
-                                            onPress={showDatepicker}
-                                            style={{ backgroundColor: 'gray', borderRadius: 10, padding: 10 }}
-                                        >
-                                            <Text>Chọn ngày</Text>
-                                        </TouchableOpacity>
+                                        <View style={{ marginBottom : 20}}>
+                                            <Text style={{fontWeight:'bold',fontSize:18}}>Báo Cáo Thống Kê</Text>
+                                        </View>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <View style={styles.tkText}>
+                                                <Text>Từ</Text>
+                                            </View>
+                                            <TouchableOpacity
+                                                onPress={showDatepicker}
+                                                style={styles.showDatepicker}
+                                            >
+                                                <Text>{state.dateChangeTo}</Text>
+                                            </TouchableOpacity>
+                                            <View style={styles.tkText}>
+                                                <Text>Đến</Text>
+                                            </View>
+                                            <TouchableOpacity
+                                                onPress={showDatepicker}
+                                                style={styles.showDatepicker}
+                                            >
+                                                <Text>{state.dateChangeEnd}</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        <View style={{marginVertical:10}}>
+                                            <Text>Thu : </Text>
+                                            <Text>Chi : </Text>
+                                            <Text>Cho Vay : </Text>
+                                            <Text>Nợ : </Text>
+                                        </View>
                                         <TouchableOpacity
                                             onPress={() => setModalVisible(!modalVisible)}
-                                            style={{ width: 60, backgroundColor: 'gray', borderRadius: 10, padding: 10 }}
+                                            style={{ width: 60, backgroundColor: '#B3B3B3', borderRadius: 10, padding: 10 ,marginTop:10}}
                                         >
-                                            <Text>Dong</Text>
+                                            <Text>Đóng</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
@@ -112,10 +154,10 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     modalView: {
-        backgroundColor: "white",
+        backgroundColor: "#FBDADA",
         borderRadius: 20,
-        padding: 35,
         alignItems: "center",
+        padding: 15
     },
     openButton: {
         borderRadius: 20,
@@ -129,6 +171,17 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
+    },
+    tkText : {
+        justifyContent:'center',
+        alignItems:'center',
+
+    },
+    showDatepicker : {
+        backgroundColor: '#B3B3B3', 
+        borderRadius: 10, 
+        padding: 10 ,
+        marginHorizontal:10
     }
 })
 

@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "82005084815-daptcf54obtc50sk7pkn29ooi5f05i8a.apps.googleusercontent.com",
+          "client_id": "82005084815-k9m0t5ahausosmkuqbqs0aq8snv9oeik.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.quanlychitieu",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            "certificate_hash": "b6e2ac7fb423b7160497296c5fc60646c21ff164"
           }
         },
         {

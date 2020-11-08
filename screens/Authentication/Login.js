@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, Image, Alert, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Button, Dimensions } from 'react-native';
 import auth from '@react-native-firebase/app';
 import { GoogleSignin } from '@react-native-community/google-signin';
 
 GoogleSignin.configure({
-    webClientId: '82005084815-gpmi4b3a9nk7vimrc400mj92n4njoitv.apps.googleusercontent.com',
+    webClientId: '82005084815-gpmi4b3a9nk7vimrc400mj92n4njoitv.apps.googleusercontent.com'
+    
 });
 
 async function onGoogleButtonPress() {
@@ -60,13 +61,11 @@ export default class Login extends Component {
                         }
                     </View>
                     <View style={styles.buttonPress}>
-                        <TouchableOpacity>
                             <Button
                                 title="Đăng nhập bằng google"
                                 onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
                                 color="#BF1010"
                             />
-                        </TouchableOpacity>
                     </View>
                     <View style={styles.buttonPress}>
                         <Button
