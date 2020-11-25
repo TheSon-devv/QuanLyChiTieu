@@ -115,7 +115,7 @@ const CustomHeaderHistory = () => {
                                         </View>
                                         <TouchableOpacity
                                             onPress={() => setModalVisible(!modalVisible)}
-                                            style={{ width: 60, backgroundColor: '#B3B3B3', borderRadius: 10, padding: 10 ,marginTop:10}}
+                                            style={{ width: 60, backgroundColor: '#B3B3B3', borderRadius: 10, padding: 10 ,marginTop:5,alignItems:'center'}}
                                         >
                                             <Text>Đóng</Text>
                                         </TouchableOpacity>

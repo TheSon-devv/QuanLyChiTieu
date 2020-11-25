@@ -3,12 +3,11 @@ import {StyleSheet,View,Text,TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
-export default class CustomAddSpending extends Component{
-    render(){
+const CustomAddSpending = ({navigation}) => {
         return(
         <View style={styles.headerContainer}>
             <View style={{flex:1,marginLeft:10}}>
-                <TouchableOpacity onPress={ () => this.props.navigation.goBack()}>
+                <TouchableOpacity onPress={ () => navigation.goBack()}>
                     <FontAwesome name="angle-left" size={30} color="#fff"/>
                 </TouchableOpacity>
             </View>
@@ -17,7 +16,6 @@ export default class CustomAddSpending extends Component{
             </View>
         </View>
         )
-    }
 }
 const styles = StyleSheet.create({
     headerContainer : {
@@ -27,3 +25,4 @@ const styles = StyleSheet.create({
         marginBottom : 10
     },
 })
+export default CustomAddSpending;

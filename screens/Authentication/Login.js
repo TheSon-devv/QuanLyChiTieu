@@ -1,23 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, Dimensions } from 'react-native';
-import auth from '@react-native-firebase/app';
-import { GoogleSignin } from '@react-native-community/google-signin';
-
-GoogleSignin.configure({
-    webClientId: '82005084815-gpmi4b3a9nk7vimrc400mj92n4njoitv.apps.googleusercontent.com'
-    
-});
-
-async function onGoogleButtonPress() {
-    // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
-
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
-}
 
 export default class Login extends Component {
 
@@ -63,13 +45,13 @@ export default class Login extends Component {
                     <View style={styles.buttonPress}>
                             <Button
                                 title="Đăng nhập bằng google"
-                                onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+                                
                                 color="#BF1010"
                             />
                     </View>
                     <View style={styles.buttonPress}>
                         <Button
-                            title="Chưa có tài khoản ? Đăng ký "
+                            title="Đăng nhập"
                             onPress={() => this.props.navigation.navigate('BottomNavigator')}
                             color="#BF1010"
                         />
