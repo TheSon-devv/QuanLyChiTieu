@@ -1,14 +1,18 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import Authentication from './screens/Authentication';
+import { NavigationContainer } from '@react-navigation/native';
+import InitialNavigator from './screens/Navigator/InitialNavigator';
+import Authentication from './screens/Navigator/Authentication';
 
-const App = ({navigation}) => {
-    return (
-      <NavigationContainer>
-          <Authentication navigation={navigation}/>
-      </NavigationContainer>
-    );
+class App extends Component {
+    render() {
+        const navigation = this.props;
+        return (
+            <NavigationContainer>
+                <InitialNavigator navigation={navigation}/>
+            </NavigationContainer>
+        );
+    }
+
 };
 export default App;

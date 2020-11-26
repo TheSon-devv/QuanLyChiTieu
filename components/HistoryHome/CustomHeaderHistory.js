@@ -11,7 +11,8 @@ const thongKe = {
 
 const CustomHeaderHistory = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [date, setDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [state, setState] = useState(thongKe);

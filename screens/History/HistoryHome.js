@@ -11,7 +11,7 @@ import CustomHeaderHistory from '../../components/HistoryHome/CustomHeaderHistor
 const HistoryHome = (props) => {
     const [data, setData] = useState([]);
     const [active, setActive] = useState(false);
-    const [url, setUrl] = useState('http://192.168.0.117:3000/quanlychitieu/history')
+    const [url, setUrl] = useState('http://192.168.43.36:3000/quanlychitieu/history')
 
     useEffect( () => {
         const getApi = async () => {

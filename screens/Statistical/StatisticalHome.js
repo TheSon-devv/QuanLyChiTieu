@@ -8,7 +8,7 @@ export default class StatisticalHome extends Component {
     render() {
         return (
             <View>
-
+                <Text>Son2</Text>
             </View>
         );
     }

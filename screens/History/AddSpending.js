@@ -8,7 +8,7 @@ const AddSpending = ({ navigation }) => {
     const [data, setData] = useState([]);
     const [selectedValueLCT, setSelectedValueLCT] = useState('Thu');
     const [selectedValueDM, setSelectedValueDM] = useState("muckhac");
-console.log(selectedValueDM);
+    console.log(selectedValueDM);
     const [active, setActive] = useState(false);
     const [url, setUrl] = useState('http://192.168.0.117:3000/quanlychitieu/danhmuc')
     const [modalVisible, setModalVisible] = useState(false);

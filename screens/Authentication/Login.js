@@ -1,61 +1,72 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Button, Dimensions, Image } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import moneybox from "../../assets/images/moneybox.png";
 
 export default class Login extends Component {
 
     state = { email: '', password: '', errorMessage: null }
 
-    // handleLogin = () => {
-    //     const { email,password } = this.state
-    //     if(email == ''){
-    //         Alert.alert('Vui lòng nhập email !');
-    //     }
-    //     else if(password == ''){
-    //         Alert.alert('Vui lòng nhập mật khẩu !');
-    //     }
-    //     else{
-    //         firebase
-    //             .auth()
-    //             .signInWithEmailAndPassword(email,password)
-    //             .then( () => this.props.navigation.navigate('Drawer'))
-    //             .then( () => Alert.alert("Đăng nhập thành công !"))
-    //             .catch( error => this.setState( {errorMessage: error.message} ) )
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
     render() {
         return (
             <View style={styles.container}>
-
-                <View style={styles.formLogin}>
-                    <View style={{ marginBottom: 30 }}>
-                        <Text style={styles.textLogin}>ĐĂNG NHẬP</Text>
+                <View style={{ marginTop: 30, alignItems: 'center' }}>
+                    <View >
+                        <Image source={moneybox} style={styles.imageBook} />
                     </View>
+                    <View style={{marginTop:20}}>
+                        <Text style={{ color: "#ff563f", fontSize: 25,fontFamily:'BigShouldersStencilDisplay-Bold'}}>Quản lý chi tiêu</Text>
+                    </View>
+                    <View>
+                        <Text style={{fontFamily:'Roboto-Italic'}}>Welcome Back !!!</Text>
+                    </View>
+                </View>
+                <View style={styles.formLogin}>
 
-
-                    <View style={{ justifyContent: 'center', marginHorizontal: 30 }}>
+                    <View style={{ justifyContent: 'center', marginHorizontal: 10 }}>
                         {this.state.errorMessage &&
                             <Text style={{ color: 'red', fontSize: 18 }}>
                                 {this.state.errorMessage}
                             </Text>
                         }
                     </View>
-                    <View style={styles.buttonPress}>
-                            <Button
-                                title="Đăng nhập bằng google"
-                                
-                                color="#BF1010"
-                            />
-                    </View>
-                    <View style={styles.buttonPress}>
-                        <Button
-                            title="Đăng nhập"
-                            onPress={() => this.props.navigation.navigate('BottomNavigator')}
-                            color="#BF1010"
+
+                    <View style={{ width: '100%', alignItems: 'center'}}>
+                        <TextInput
+                            placeholder="Email or Phone"
+                            autoCapitalize="none"
+                            style={styles.textInput}
                         />
+                        <TextInput
+                            placeholder="Password"
+                            autoCapitalize="none"
+                            secureTextEntry
+                            style={styles.textInput}
+                        />
+
+                        <View style={{ marginVertical:10, marginLeft: 150 }}>
+                            <TouchableOpacity>
+                                <Text style={{ color: '#ff563f',fontFamily:'Roboto-Italic'}}>Forgot your password ? </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
+
+                    <View style={styles.buttonPress}>
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate('BottomNavigator')}
+                            style={styles.buttonSignIn}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 16,fontFamily:'Roboto-Light'}}>Sign In</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{ marginVertical: 20, flexDirection: 'row' }}>
+                        <Text style={{ color: '#C3C3C3' }}>Don't have an account ? </Text>
+                        <TouchableOpacity>
+                            <Text style={{fontFamily:'Roboto-BoldItalic'}}>Register</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
             </View>
         )
@@ -63,23 +74,23 @@ export default class Login extends Component {
 }
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
-const itemWidth = (width - 200) / 2;
-const itemImageHeight = (itemWidth / 300) * 266;
+const itemWidth = (width - 150) / 2;
+const itemImageHeight = (itemWidth / 512) * 512;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFF'
     },
     formLogin: {
-        alignItems: 'center',
-        marginTop: 50
+        marginTop: 30,
+        alignItems: 'center'
     },
     imageBook: {
         width: itemWidth,
         height: itemImageHeight,
-        marginLeft: 20,
-        marginBottom: 30
+        marginBottom: 10,
+
     },
     textLogin: {
         fontSize: 25,
@@ -90,14 +101,19 @@ const styles = StyleSheet.create({
         height: 50,
         width: '80%',
         borderColor: 'gray',
-        borderWidth: 0.5,
+        borderBottomWidth: 0.5,
         marginVertical: 8,
-        borderRadius: 10,
         fontSize: 16,
         color: '#000000'
     },
     buttonPress: {
         marginTop: 8,
         width: '80%',
+    },
+    buttonSignIn: {
+        backgroundColor: "#ff563f",
+        alignItems: 'center',
+        paddingVertical: 15,
+        borderRadius: 5
     }
 })

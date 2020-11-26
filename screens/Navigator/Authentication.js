@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomNavigator from './BottomNavigator';
-import Login from './Authentication/Login';
+import Login from '../Authentication/Login';
 
 const AuthenticationStack = createStackNavigator();
 
